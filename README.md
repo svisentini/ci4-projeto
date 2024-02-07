@@ -67,6 +67,7 @@ Pagina de Templates
 	
 	As pastas devem ser copiadas para dentro do projeto na pasta public/recursos
 	
+	<?php echo site_url() ?>      >> site_url aponta para a pasta "public"
 
 
 
