@@ -61,7 +61,7 @@ php spark serve
 # Exemplos de HTML
 	Ref: https://www.w3schools.com/html
 
-Pagina de Templates
+# Pagina de Templates
 	https://www.templateshub.net/
 	Dark Admin Bootstrap 4 PREMIUM Free Download
 	
@@ -69,8 +69,25 @@ Pagina de Templates
 	
 	<?php echo site_url() ?>      >> site_url aponta para a pasta "public"
 
+# Criando layouts para serem estendidos pelas views
+	Referencia
+		https://codeigniter.com/user_guide/outgoing/view_layouts.html
+	Pontos de inserção de codigo
+		<?php echo $this->renderSection('conteudo'); ?>
+	Exibição do ano da data atual
+		<?php echo date('Y'); ?>
 
+# Utilizando layout criado
+	Referencia
+		https://codeigniter.com/user_guide/outgoing/view_layouts.html
+	Extendendo de um layout
+		<?= $this->extend('Layout/principal') ?>
+	Criando as sessões
+		<?= $this->section('titulo') ?>
+			<?php echo $titulo; ?>
+		<?= $this->endSection() ?>
 
+	
 
 
 
