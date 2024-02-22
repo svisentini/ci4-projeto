@@ -87,6 +87,24 @@ php spark serve
 			<?php echo $titulo; ?>
 		<?= $this->endSection() ?>
 
+# Módulo de Usuários
+	Criar o banco de dados
+		php spark db:create ordem
+	Configurar projeto para utilizar novo banco de dados
+		.env
+		database.default.database = ordem
+	Criar a tabela de migrações
+		php spark migrate
+	Criar as migrações para Usuários
+		php spark make:migration cria_tabela_usuarios
+		Criar PK
+			$this->forge->addKey
+		Criar Chave Unica
+			$this->forge->addUniqueKey
+	Rodar a migração
+		php spark migrate
+	Status 
+		php spark migrate:status
 	
 
 
@@ -95,5 +113,11 @@ php spark serve
 
 
 
+	
+	
+	
+	
+	
+	
 	
 	

@@ -1,0 +1,28 @@
+ERROR - 2024-02-22 00:28:50 --> Error connecting to the database: mysqli_sql_exception: Unknown database 'ordem' in /home/sidao/GIT/ci4-projeto/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:184
+Stack trace:
+#0 /home/sidao/GIT/ci4-projeto/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(184): mysqli->real_connect()
+#1 /home/sidao/GIT/ci4-projeto/vendor/codeigniter4/framework/system/Database/BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect()
+#2 /home/sidao/GIT/ci4-projeto/vendor/codeigniter4/framework/system/Database/BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#3 /home/sidao/GIT/ci4-projeto/vendor/codeigniter4/framework/system/Database/BaseConnection.php(1410): CodeIgniter\Database\BaseConnection->query()
+#4 /home/sidao/GIT/ci4-projeto/vendor/codeigniter4/framework/system/Database/BaseConnection.php(1429): CodeIgniter\Database\BaseConnection->listTables()
+#5 /home/sidao/GIT/ci4-projeto/vendor/codeigniter4/framework/system/Database/MigrationRunner.php(757): CodeIgniter\Database\BaseConnection->tableExists()
+#6 /home/sidao/GIT/ci4-projeto/vendor/codeigniter4/framework/system/Database/MigrationRunner.php(161): CodeIgniter\Database\MigrationRunner->ensureTable()
+#7 /home/sidao/GIT/ci4-projeto/vendor/codeigniter4/framework/system/Commands/Database/Migrate.php(84): CodeIgniter\Database\MigrationRunner->latest()
+#8 /home/sidao/GIT/ci4-projeto/vendor/codeigniter4/framework/system/CLI/Commands.php(65): CodeIgniter\Commands\Database\Migrate->run()
+#9 /home/sidao/GIT/ci4-projeto/vendor/codeigniter4/framework/system/CLI/Console.php(46): CodeIgniter\CLI\Commands->run()
+#10 /home/sidao/GIT/ci4-projeto/spark(102): CodeIgniter\CLI\Console->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Unknown database 'ordem' in /home/sidao/GIT/ci4-projeto/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:229
+Stack trace:
+#0 /home/sidao/GIT/ci4-projeto/vendor/codeigniter4/framework/system/Database/BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect()
+#1 /home/sidao/GIT/ci4-projeto/vendor/codeigniter4/framework/system/Database/BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/sidao/GIT/ci4-projeto/vendor/codeigniter4/framework/system/Database/BaseConnection.php(1410): CodeIgniter\Database\BaseConnection->query()
+#3 /home/sidao/GIT/ci4-projeto/vendor/codeigniter4/framework/system/Database/BaseConnection.php(1429): CodeIgniter\Database\BaseConnection->listTables()
+#4 /home/sidao/GIT/ci4-projeto/vendor/codeigniter4/framework/system/Database/MigrationRunner.php(757): CodeIgniter\Database\BaseConnection->tableExists()
+#5 /home/sidao/GIT/ci4-projeto/vendor/codeigniter4/framework/system/Database/MigrationRunner.php(161): CodeIgniter\Database\MigrationRunner->ensureTable()
+#6 /home/sidao/GIT/ci4-projeto/vendor/codeigniter4/framework/system/Commands/Database/Migrate.php(84): CodeIgniter\Database\MigrationRunner->latest()
+#7 /home/sidao/GIT/ci4-projeto/vendor/codeigniter4/framework/system/CLI/Commands.php(65): CodeIgniter\Commands\Database\Migrate->run()
+#8 /home/sidao/GIT/ci4-projeto/vendor/codeigniter4/framework/system/CLI/Console.php(46): CodeIgniter\CLI\Commands->run()
+#9 /home/sidao/GIT/ci4-projeto/spark(102): CodeIgniter\CLI\Console->run()
+#10 {main}
