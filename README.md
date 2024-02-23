@@ -105,6 +105,14 @@ php spark serve
 		php spark migrate
 	Status 
 		php spark migrate:status
+	Criando Controller e Modelo de Usuarios
+		php spark make:model UsuarioModel
+		php spark make:controller Usuarios
+		
+	Semeando a tabela de usuarios com dados "fake"
+		fazer fzaninotto (Ja vem quando instalamos o codeigniter utilizando o composer)
+		php spark make:seeder UsuarioFakerSeeder
+		php spark db:seed UsuarioFakerSeeder
 	
 
 
