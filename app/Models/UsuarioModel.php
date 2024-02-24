@@ -23,7 +23,7 @@ class UsuarioModel extends Model
     protected bool $allowEmptyInserts = false;
 
     // Dates
-    protected $useTimestamps = true; // campos criado_em, atualizado_em e deletado_em sao preenchidos automaticamente
+    protected $useTimestamps = true; // true >> campos criado_em, atualizado_em e deletado_em sao preenchidos automaticamente
     
     protected $createdField  = 'criado_em';
     protected $updatedField  = 'atualizado_em';

@@ -29,7 +29,7 @@ class UsuarioFakerSeeder extends Seeder
         // exit;
 
         $usuarioModel->skipValidation(true) // Pula as validações
-                     ->protect(false)  // Não valida os allowedFields
+                     ->protect(false)  // false >> Não valida os allowedFields
                      ->insertBatch($usuariosPush);
         
         echo "$criarQuantosUsuarios usuários criados com Sucesso !"; 

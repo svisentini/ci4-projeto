@@ -213,9 +213,10 @@
         </div>
         <section class="no-padding-top no-padding-bottom">
        
-          <!-- Espaço reservado para renderizar o CONTEUDO de cada view que estender esse layout -->
-          <?php echo $this->renderSection('conteudo'); ?>
-
+          <div class="container-fluid">
+            <!-- Espaço reservado para renderizar o CONTEUDO de cada view que estender esse layout -->
+            <?php echo $this->renderSection('conteudo'); ?>
+          </div>
 
         </section>
 
@@ -237,7 +238,7 @@
     <script src="<?php echo site_url('recursos/'); ?>js/front.js"></script>
 
     <!-- Espaço reservado para renderizar os SCRIPTS de cada view que estender esse layout -->
-    <?php echo $this->renderSection('script'); ?>
+    <?php echo $this->renderSection('scripts'); ?>
 
   </body>
 </html>

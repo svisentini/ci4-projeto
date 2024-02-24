@@ -110,11 +110,13 @@ php spark serve
 		php spark make:controller Usuarios
 		
 	Semeando a tabela de usuarios com dados "fake"
-		fazer fzaninotto (Ja vem quando instalamos o codeigniter utilizando o composer)
+		faker fzaninotto (Ja vem quando instalamos o codeigniter utilizando o composer)
 		php spark make:seeder UsuarioFakerSeeder
 		php spark db:seed UsuarioFakerSeeder
 	
-
+	Instalando o plugin Datatable na nossa aplicação
+		https://datatables.net/
+		
 
 
 
