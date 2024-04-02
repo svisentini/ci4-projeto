@@ -11,7 +11,7 @@ class UsuarioFakerSeeder extends Seeder
         $usuarioModel = new \App\Models\UsuarioModel();
         // use the factory to create a Faker\Generator instance
         $faker = \Faker\Factory::create();
-        $criarQuantosUsuarios = 50;
+        $criarQuantosUsuarios = 5000;
         $usuariosPush = [];
 
         for($i = 0; $i < $criarQuantosUsuarios; $i++){
@@ -20,7 +20,7 @@ class UsuarioFakerSeeder extends Seeder
                 'nome' => $faker->unique()->name,
                 'email' => $faker->unique()->email,
                 'password_hash' => '123456', // Ainda nao conhecemos hash de senhas (criptografia)
-                'ativo' => true,
+                'ativo' => $faker->numberBetween(0, 1), // Variando valores entre 0 e 1, ou seja, True ou False
             ]);
         }
 

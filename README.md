@@ -132,6 +132,13 @@ php spark serve
 		
 	Tipos de Paginação
 		https://datatables.net/reference/option/pagingType
+		
+	Criando mais registros para testes
+		Arquivo alterado : UsuarioFakerSeeder
+		php spark migrate:rollback
+		php spark migrate
+		php spark db:seed UsuarioFakerSeeder
+		
 
 
 
