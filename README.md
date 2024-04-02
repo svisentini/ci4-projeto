@@ -117,6 +117,21 @@ php spark serve
 	Instalando o plugin Datatable na nossa aplicação
 		https://datatables.net/
 		
+	Utilizando Ajax para recuperar as informações >> Devido a grande quantidade de informações... melhoria de performance
+	
+	esc() >> Coloca escape de caracteres para nao quebrar o layout
+	http://localhost:8080/usuarios/recuperaUsuarios
+	http://localhost:8080/usuarios
+	
+	Tradução do DataTable
+		Infomações >> https://datatables.net/reference/option/language
+		Chaves em Portugues >> https://datatables.net/plug-ins/i18n/Portuguese-Brasil.html
+	
+	deferRender >> Performance para grande quantidade de registros na DataTable
+		https://datatables.net/reference/option/deferRender
+		
+	Tipos de Paginação
+		https://datatables.net/reference/option/pagingType
 
 
 

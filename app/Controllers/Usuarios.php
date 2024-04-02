@@ -23,4 +23,44 @@ class Usuarios extends BaseController
         return view ('Usuarios/index', $data);
 
     }
+
+    public function recuperaUsuarios(){
+        // if (!$this->request->isAJAX()){
+            // return redirect()->back();
+        // }
+        
+        $atributos = [
+            'id',
+            'nome',
+            'email',
+            'ativo',
+            'imagem',
+        ];
+        $usuarios = $this->usuarioModel->select($atributos)
+                                        ->findAll();
+
+        // Recebera o array de objetos de Usuários
+        $data = [];
+
+        foreach($usuarios as $usuario){
+            $data[] = [
+                'imagem' => $usuario->imagem,
+                'nome' => esc($usuario->nome),
+                'email' => esc($usuario->email),
+                'ativo' => ($usuario->ativo == true ? 'Ativo' : '<span class="text-warning">Inativo</span>' ),
+
+            ];
+        }
+
+        $retorno = [
+            'data' => $data,
+        ];
+
+        // echo '<pre>';
+        // print_r($retorno);
+        // exit;
+
+        return $this->response->setJSON($retorno);
+
+    }
 }
