@@ -135,9 +135,9 @@ php spark serve
 		
 	Criando mais registros para testes
 		Arquivo alterado : UsuarioFakerSeeder
-		php spark migrate:rollback
-		php spark migrate
-		php spark db:seed UsuarioFakerSeeder
+		php spark migrate:rollback				>> Irá excluir a tabela de usuários
+		php spark migrate						>> Criara a tabela de usuarios, porem sem registros
+		php spark db:seed UsuarioFakerSeeder    >> Insere registros na tabela de usuarios.
 		
 
 
