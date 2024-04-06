@@ -148,6 +148,8 @@ php spark serve
 	$defaultLocale = 'pt-BR'
 	$appTimezone = 'America/Sao_Paulo'
 
+# Criar um link para cada Usuário da listagem
+	CodeIgniter anchor
 		
 
 
