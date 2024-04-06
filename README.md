@@ -135,6 +135,7 @@ php spark serve
 		
 	Criando mais registros para testes
 		Arquivo alterado : UsuarioFakerSeeder
+
 		php spark migrate:rollback		>> Apaga a tabela de usuarios
 		php spark migrate				>> Cria novamente a tabela de usuarios porem sem registros
 		php spark db:seed UsuarioFakerSeeder   >> Cria novos usuarios na tabela 
@@ -146,6 +147,7 @@ php spark serve
 	app/Config/App.php >> para setar a linguagem
 	$defaultLocale = 'pt-BR'
 	$appTimezone = 'America/Sao_Paulo'
+
 		
 
 
