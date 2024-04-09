@@ -71,7 +71,7 @@ class Usuarios extends BaseController
         //dd($usuario);
 
         $data = [
-            'titulo' => "Detalhando o usuário ".esc($usuario->nome),
+            'titulo' => "Detalhando o usuário >> ".esc($usuario->nome),
             'usuario' => $usuario,
         ];
         return view('Usuarios/exibir', $data);

@@ -149,9 +149,12 @@ php spark serve
 	$appTimezone = 'America/Sao_Paulo'
 
 # Criar um link para cada Usuário da listagem
-	CodeIgniter anchor
+	Busca no google como : >> CodeIgniter anchor 
 		
-
+# Trabalhando na view de Exibir - Parte 1
+	Banco de imagens free >> https://pixabay.com/pt
+	Busca por user >> baixar 640x640
+	Salvar em public/recursos/img/{nome_arquivo}.png
 
 
 
