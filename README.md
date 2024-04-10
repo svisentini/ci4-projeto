@@ -155,6 +155,9 @@ php spark serve
 	Banco de imagens free >> https://pixabay.com/pt
 	Busca por user >> baixar 640x640
 	Salvar em public/recursos/img/{nome_arquivo}.png
+	
+# Trabalhando na view de Exibir - Parte 2
+	Dropdown do bootstrap >> https://getbootstrap.com/docs/4.0/components/dropdowns/ >> Primary
 
 
 
