@@ -159,6 +159,15 @@ php spark serve
 # Trabalhando na view de Exibir - Parte 2
 	Dropdown do bootstrap >> https://getbootstrap.com/docs/4.0/components/dropdowns/ >> Primary
 
+# Conhecendo Entidades
+	Referencia >> https://codeigniter.com/user_guide/models/entities.html
+	Uma entidade representa uma unica linha do banco de dados.
+	A Entidade NAO persiste as informações no banco de dados >> A Classe de Mdelo é que faz isso!
+	Relaciona os campos com o allowed fields do Modelo.
+	php spark make:entity {Nome da Entity}  >> php spark make:entity Usuario
+	Setar no Modelo para que o retorno ($returnType) seja a Entidade de Usuario e não um object >> 'App\Entities\Usuario'
+	
+	
 
 
 

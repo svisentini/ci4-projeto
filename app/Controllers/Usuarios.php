@@ -68,7 +68,7 @@ class Usuarios extends BaseController
     public function exibir (int $id = null){
         $usuario = $this->buscaUsuarioOu404($id);
 
-        //dd($usuario);
+        dd($usuario);
 
         $data = [
             'titulo' => "Detalhando o usuário >> ".esc($usuario->nome),
