@@ -166,6 +166,17 @@ php spark serve
 	Relaciona os campos com o allowed fields do Modelo.
 	php spark make:entity {Nome da Entity}  >> php spark make:entity Usuario
 	Setar no Modelo para que o retorno ($returnType) seja a Entidade de Usuario e não um object >> 'App\Entities\Usuario'
+	** Util quando precisamos manipular os dados e nao apenas visualizar !!
+	
+# Humanizando as datas na Aplicação
+	Corrigir o nome das colunas que sao datas na Entity Usuario.
+	campos tipo data ->humanize()
+	Da erro com datas que estao nulas !
+	
+# Metodo para exibir a View de EDIÇÃO de um Usuário
+	https://codeigniter.com/user_guide/helpers/form_helper.html
+	BaseController >> Os Controles extendem dele, entao é o local onde sao definidas as funcionalidades comuns para os Controlers.
+	'form' deve ser carregado no helper (do BaseController) para nao dar erro
 	
 	
 
