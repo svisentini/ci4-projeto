@@ -178,6 +178,16 @@ php spark serve
 	BaseController >> Os Controles extendem dele, entao é o local onde sao definidas as funcionalidades comuns para os Controlers.
 	'form' deve ser carregado no helper (do BaseController) para nao dar erro
 	
+# Conhecendo os Filtros de Controle
+	Referencia >> https://codeigniter.com/user_guide/incoming/filters.html
+	São ações que podem ser executadas na requisição ou na resposta dos serviços
+	Arquivo de configuração desses filtros >> app/Config/Filters.php
+		remover o comentario em $globals
+		Usando o form helper no html e habilitando o csrf, o hidden do token sera inserido automaticamente >> + seguranca para a aplicação.
+		
+
+# Protegendo a aplicação contra ataques
+	
 	
 
 
