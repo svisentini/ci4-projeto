@@ -20,19 +20,19 @@ class Usuarios extends BaseController
             'titulo' => 'Listando os Usuários do Sistema',
         ];
 
-        return view ('Usuarios/index', $data);
-
+        return view('Usuarios/index', $data);
     }
 
     // ----------------------------------------------------------------------------------
     // --------- recuperar usuario ------------------------------------------------------
     // ----------------------------------------------------------------------------------
-    
-    public function recuperaUsuarios(){
+
+    public function recuperaUsuarios()
+    {
         // if (!$this->request->isAJAX()){
-            // return redirect()->back();
+        // return redirect()->back();
         // }
-        
+
         $atributos = [
             'id',
             'nome',
@@ -41,18 +41,18 @@ class Usuarios extends BaseController
             'imagem',
         ];
         $usuarios = $this->usuarioModel->select($atributos)
-                                        ->findAll();
+            ->findAll();
 
         // Recebera o array de objetos de Usuários
         $data = [];
 
-        foreach($usuarios as $usuario){
+        foreach ($usuarios as $usuario) {
 
             $data[] = [
                 'imagem' => $usuario->imagem,
-                'nome' => anchor("usuarios/exibir/$usuario->id", esc($usuario->nome), 'title="Exibir usuário : '.esc($usuario->nome).'"'),
+                'nome' => anchor("usuarios/exibir/$usuario->id", esc($usuario->nome), 'title="Exibir usuário : ' . esc($usuario->nome) . '"'),
                 'email' => esc($usuario->email),
-                'ativo' => ($usuario->ativo == true ? '<i class="fa fa-unlock text-success"></i>&nbsp;Ativo' : '<i class="fa fa-lock text-warning"></i>&nbsp;Inativo' ),
+                'ativo' => ($usuario->ativo == true ? '<i class="fa fa-unlock text-success"></i>&nbsp;Ativo' : '<i class="fa fa-lock text-warning"></i>&nbsp;Inativo'),
 
             ];
         }
@@ -66,20 +66,20 @@ class Usuarios extends BaseController
         // exit;
 
         return $this->response->setJSON($retorno);
-
     }
 
     // -----------------------------------------------------------------------
     // --------- exibir ------------------------------------------------------
     // -----------------------------------------------------------------------
 
-    public function exibir (int $id = null){
+    public function exibir(int $id = null)
+    {
         $usuario = $this->buscaUsuarioOu404($id);
 
         // dd($usuario);
 
         $data = [
-            'titulo' => "Detalhando o usuário >> ".esc($usuario->nome),
+            'titulo' => "Detalhando o usuário >> " . esc($usuario->nome),
             'usuario' => $usuario,
         ];
         return view('Usuarios/exibir', $data);
@@ -89,16 +89,39 @@ class Usuarios extends BaseController
     // --------- editar ------------------------------------------------------
     // -----------------------------------------------------------------------
 
-    public function editar (int $id = null){
+    public function editar(int $id = null)
+    {
         $usuario = $this->buscaUsuarioOu404($id);
 
         // dd($usuario);
 
         $data = [
-            'titulo' => "Editando o usuário >> ".esc($usuario->nome),
+            'titulo' => "Editando o usuário >> " . esc($usuario->nome),
             'usuario' => $usuario,
         ];
         return view('Usuarios/editar', $data);
+    }
+
+    // -----------------------------------------------------------------------
+    // --------- atualizar ---------------------------------------------------
+    // -----------------------------------------------------------------------
+
+    public function atualizar()
+    {
+        // Aceita apenas requisições Ajax
+        if (!$this->request->isAJAX()) {
+            return redirect()->back();
+        }
+
+        // Recupera todas informações do Post
+        $post = $this->request->getPost();
+
+        // Precisa fazer dessa forma pois o dd nao funciona em metodos chamados pelo ajax.
+        echo '<pre>';
+        print_r($post);
+        exit;
+
+
     }
 
     // -----------------------------------------------------------------------
@@ -110,13 +133,13 @@ class Usuarios extends BaseController
      * @param integer $id
      * @return Exceptions|object
      */
-    private function buscaUsuarioOu404(int $id = null){
+    private function buscaUsuarioOu404(int $id = null)
+    {
         // Se o id nao foi informado ou nao foi encontrado na base de dados....
         // Se encontrar, $usuario ja estara populada com o usuario encontrado.
-        if (!$id || !$usuario = $this->usuarioModel->withDeleted(true)->find($id) ){
+        if (!$id || !$usuario = $this->usuarioModel->withDeleted(true)->find($id)) {
             throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound("Não encontramos o usuário $id");
         }
         return $usuario;
     }
-
 }

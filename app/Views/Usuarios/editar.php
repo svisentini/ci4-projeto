@@ -22,14 +22,14 @@
 
         <?php echo form_open('/', ['id' => 'form'], ['id' => "$usuario->id"]) ?>
 
-          <?php echo $this->include('Usuarios/_form'); ?>
+        <?php echo $this->include('Usuarios/_form'); ?>
 
-          <div class="form-group mt-5 mb-2">
+        <div class="form-group mt-5 mb-2">
 
-            <input id="btn-salvar" type="submit" value="Salvar" class="btn btn-danger mr-2">
-            <a href="<?php echo site_url("usuarios/exibir/$usuario->id") ?>" class="btn btn-secondary ml-2">Voltar</a>
+          <input id="btn-salvar" type="submit" value="Salvar" class="btn btn-danger btn-sm mr-2">
+          <a href="<?php echo site_url("usuarios/exibir/$usuario->id") ?>" class="btn btn-sm btn-secondary ml-2">Voltar</a>
 
-          </div>
+        </div>
 
         <?php echo form_close(); ?>
 
@@ -43,4 +43,39 @@
 
 <?php echo $this->section('scripts') ?>
 <!-- Aqui coloco os SCRIPTS da View -->
+
+<script>
+  $(document).ready(function() {
+
+    $("#form").on('submit', function(e) {
+
+      //alert('Chegou ate aqui');
+      e.preventDefault();
+
+      $.ajax({
+        type: 'POST',
+        url: '<?php echo site_url('usuarios/atualizar'); ?>',
+        data: new FormData(this),
+        dataType: 'json',
+        contentType: false,
+        cache: false,
+        processData: false,
+        // Ações antes de Enviar a requisição !
+        beforeSend: function(){
+          $("#response").html('');  // Limpando a div response
+          $("#btn-salvar").val('Por favor aguarde ...'); // Altera o que esta escrito no botao de salvar !
+        },
+        // Definir o que ocorre no Sucesso
+        success: function(response){
+          $("#btn-salvar").val('Salvar'); // Volta o que estava escrito originalmente no botao de salvar !
+          $("#btn-salvar").removeAttr("disabled"); // Retirando o atributo disabled, o botao ficara habilitado denovo.
+        },
+
+      });
+
+    });
+
+  });
+</script>
+
 <?php echo $this->endSection() ?>

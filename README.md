@@ -187,7 +187,15 @@ php spark serve
 
 # View de edição de Usuarios
 	Criar um arquivo "_form.php" que será utilizado como um include
+		Pois sera utilizado o mesmo arquivo para alteração e inclusao de usuarios.
 	o nome do token é definido em "$tokenName" que fica dentro de app/Config/Security.php
+	
+# Javascript para Editar o Usuário
+	No bloco de scripts da view de Editar Usuarios
+	Controller de Usuario >> aceitar apenas requisições ajax
+		 if (!$this->request->isAJAX()){
+            return redirect()->back();
+         }
 	
 	
 
