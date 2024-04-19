@@ -22,6 +22,8 @@
 
         <?php echo form_open('/', ['id' => 'form'], ['id' => "$usuario->id"]) ?>
 
+          <?php echo $this->include('Usuarios/_form'); ?>
+
           <div class="form-group mt-5 mb-2">
 
             <input id="btn-salvar" type="submit" value="Salvar" class="btn btn-danger mr-2">
