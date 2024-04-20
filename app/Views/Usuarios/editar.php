@@ -69,23 +69,35 @@
         success: function(response) {
           $("#btn-salvar").val('Salvar'); // Volta o que estava escrito originalmente no botao de salvar !
           $("#btn-salvar").removeAttr("disabled"); // Retirando o atributo disabled, o botao ficara habilitado denovo.
+          // Atualizar o token para permitir submeter o formulario novamente
+          // senão o codeigniter nao permite >> por segurança
+          $('[name=csrf_ordem]').val(response.token);
 
           // Verifica se no response tem uma chave 'erro'
           if (!response.erro) {
-            // Atualizar o token para permitir submeter o formulario novamente
-            // senão o codeigniter nao permite >> por segurança
-            $('[name=csrf_ordem]').val(response.token);
-
             if (response.info) {
               $("#response").html('<div class="alert alert-info">' + response.info + '</div>');
+            } else {
+              // SUCESSO >> Tudo certo com a atualização do Usuário
+              // Sera redirecionado para exibição
+              window.location.href = "<?php echo site_url("usuarios/exibir/$usuario->id"); ?>"
             }
-
           } else {
             // Existem erros de validação
+            $("#response").html('<div class="alert alert-danger">' + response.erro + '</div>');
+            // Verifica se existe erros no array
+            if(response.erros_model){
+              $.each(response.erros_model, function(key, value){
+                // Como na div ja tem informação do erro, usamos
+                // append para incluir mais informações
+                $("#response").append('<ul class="list-unstyled"><li class="text-danger">' + value + '</li></ul>')
+              });
+            }
           }
 
         },
         // Definir o que ocorre no ERRO (Erro de Processamento)
+        // Erro de Sintaxe ou falta de permissão.. cai nessa parte
         error: function() {
           alert('Não foi possível processar a solicitação. Entre em contato com o suporte técnico.');
           $("#btn-salvar").val('Salvar'); // Volta o que estava escrito originalmente no botao de salvar !
@@ -93,6 +105,14 @@
         },
 
       });
+
+    });
+
+    // Prevenir o duplo click no gravar..
+    // Ao clicar, ele sera desabilitado e, só sera habilitado
+    // novamente quando a requisição terminar de executar.
+    $("#form").submit(function(){
+      $(this).find(":submit").attr('disable', 'disabled');
 
     });
 

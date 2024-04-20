@@ -115,6 +115,13 @@ class Usuarios extends BaseController
 
         $retorno['token'] = csrf_hash();
         //$retorno['info'] = "Essa é uma mensagem de informação";
+        $retorno['erro'] = "Essa é uma mensagem de erro de validação";
+        $retorno['erros_model'] = [
+            'nome' => 'O nome é obrigatório',
+            'email' => 'Email inválido',
+            'password' => 'A senha é muito curta',
+        ];
+
         return $this->response->setJSON($retorno);
 
 
@@ -128,8 +135,6 @@ class Usuarios extends BaseController
         echo '<pre>';
         print_r($post);
         exit;
-
-
     }
 
     // -----------------------------------------------------------------------

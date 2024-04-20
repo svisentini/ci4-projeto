@@ -190,7 +190,7 @@ php spark serve
 		Pois sera utilizado o mesmo arquivo para alteração e inclusao de usuarios.
 	o nome do token é definido em "$tokenName" que fica dentro de app/Config/Security.php
 	
-# Javascript para Editar o Usuário
+# Javascript para Editar o Usuário - Parte 1
 	No bloco de scripts da view de Editar Usuarios
 	Controller de Usuario >> aceitar apenas requisições ajax
 		 if (!$this->request->isAJAX()){
@@ -201,8 +201,18 @@ php spark serve
 # Javascript para Editar o Usuário - Parte 2
 	Após submeter o formulario, caso queira submeter novamente, temos que atualizar o token
 	senao o codeigniter, por segurança, não permite submeter o formulario novamente com o mesmo token.
-	$('[name=csrf_ordem]').val(response.token);
+	$('[name=csrf_ordem]').val(response.token); 
+		backend deve colocar o novo token na chave token 
+		$retorno['token'] = csrf_hash();
 	Deve ser utilizado o "$tokenName" que fica dentro de app/Config/Security.php
+
+# Javascript para Editar o Usuário - Parte 3
+
+# Finalizando o javascript de edição de Usuário
+	Quando tiver mais de um erro, o retorno sera em forma de um array.
+	Tem que percorrer para exibir os erros
+	
+
 
 
 
