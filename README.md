@@ -196,8 +196,13 @@ php spark serve
 		 if (!$this->request->isAJAX()){
             return redirect()->back();
          }
-	
-	
+	dd() >> Não funciona quando a requisição é feita por ajax
+
+# Javascript para Editar o Usuário - Parte 2
+	Após submeter o formulario, caso queira submeter novamente, temos que atualizar o token
+	senao o codeigniter, por segurança, não permite submeter o formulario novamente com o mesmo token.
+	$('[name=csrf_ordem]').val(response.token);
+	Deve ser utilizado o "$tokenName" que fica dentro de app/Config/Security.php
 
 
 

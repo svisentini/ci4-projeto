@@ -61,12 +61,33 @@
         cache: false,
         processData: false,
         // Ações antes de Enviar a requisição !
-        beforeSend: function(){
-          $("#response").html('');  // Limpando a div response
+        beforeSend: function() {
+          $("#response").html(''); // Limpando a div response
           $("#btn-salvar").val('Por favor aguarde ...'); // Altera o que esta escrito no botao de salvar !
         },
-        // Definir o que ocorre no Sucesso
-        success: function(response){
+        // Definir o que ocorre no SUCESSO
+        success: function(response) {
+          $("#btn-salvar").val('Salvar'); // Volta o que estava escrito originalmente no botao de salvar !
+          $("#btn-salvar").removeAttr("disabled"); // Retirando o atributo disabled, o botao ficara habilitado denovo.
+
+          // Verifica se no response tem uma chave 'erro'
+          if (!response.erro) {
+            // Atualizar o token para permitir submeter o formulario novamente
+            // senão o codeigniter nao permite >> por segurança
+            $('[name=csrf_ordem]').val(response.token);
+
+            if (response.info) {
+              $("#response").html('<div class="alert alert-info">' + response.info + '</div>');
+            }
+
+          } else {
+            // Existem erros de validação
+          }
+
+        },
+        // Definir o que ocorre no ERRO (Erro de Processamento)
+        error: function() {
+          alert('Não foi possível processar a solicitação. Entre em contato com o suporte técnico.');
           $("#btn-salvar").val('Salvar'); // Volta o que estava escrito originalmente no botao de salvar !
           $("#btn-salvar").removeAttr("disabled"); // Retirando o atributo disabled, o botao ficara habilitado denovo.
         },
