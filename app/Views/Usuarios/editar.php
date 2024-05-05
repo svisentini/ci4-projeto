@@ -91,6 +91,7 @@
                 // Como na div ja tem informação do erro, usamos
                 // append para incluir mais informações
                 $("#response").append('<ul class="list-unstyled"><li class="text-danger">' + value + '</li></ul>')
+                // $("#response").append('<div class="alert alert-danger">' + value + '</div>');
               });
             }
           }
@@ -112,7 +113,7 @@
     // Ao clicar, ele sera desabilitado e, só sera habilitado
     // novamente quando a requisição terminar de executar.
     $("#form").submit(function(){
-      $(this).find(":submit").attr('disable', 'disabled');
+      $(this).find(":submit").attr('disabled', 'disabled');
 
     });
 

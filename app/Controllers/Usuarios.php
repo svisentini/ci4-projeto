@@ -113,28 +113,37 @@ class Usuarios extends BaseController
             return redirect()->back();
         }
 
+        // Envio o hash do token do form
         $retorno['token'] = csrf_hash();
         //$retorno['info'] = "Essa é uma mensagem de informação";
-        $retorno['erro'] = "Essa é uma mensagem de erro de validação";
-        $retorno['erros_model'] = [
-            'nome' => 'O nome é obrigatório',
-            'email' => 'Email inválido',
-            'password' => 'A senha é muito curta',
-        ];
+        //$retorno['erro'] = "Essa é uma mensagem de erro de validação";
+        //$retorno['erros_model'] = [
+        //    'nome' => 'O nome é obrigatório',
+        //    'email' => 'Email inválido',
+        //    'password' => 'A senha é muito curta',
+        //];
 
-        return $this->response->setJSON($retorno);
-
-
-
-
-
-        // Recupera todas informações do Post
+        // Recupera todas informações do Post da Requisição
         $post = $this->request->getPost();
+        // Validando a existencia do Usuario
+        $usuario = $this->buscaUsuarioOu404($post['id']);
+        // Preenchemos os atributos do usuario com os valores do post
+        $usuario->fill($post);
+        
+        echo '<pre>';
+        print_r($usuario);
+        exit;
+
+
+
+
+        // Retorno para o Ajax Request
+        //return $this->response->setJSON($retorno);
 
         // Precisa fazer dessa forma pois o dd nao funciona em metodos chamados pelo ajax.
-        echo '<pre>';
-        print_r($post);
-        exit;
+        //echo '<pre>';
+        //print_r($post);
+        //exit;
     }
 
     // -----------------------------------------------------------------------

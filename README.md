@@ -212,6 +212,9 @@ php spark serve
 	Quando tiver mais de um erro, o retorno sera em forma de um array.
 	Tem que percorrer para exibir os erros
 	
+# 48.24 >> Trabalhando no metodo de atualizar - Parte 1
+	
+	
 
 
 
