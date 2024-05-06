@@ -125,20 +125,36 @@ class Usuarios extends BaseController
 
         // Recupera todas informações do Post da Requisição
         $post = $this->request->getPost();
+
+        // Remove o atributo passwod >> bypass temporario 
+        unset($post['password']);
+        unset($post['password_confirmation']);
+
         // Validando a existencia do Usuario
         $usuario = $this->buscaUsuarioOu404($post['id']);
         // Preenchemos os atributos do usuario com os valores do post
         $usuario->fill($post);
         
-        echo '<pre>';
-        print_r($usuario);
-        exit;
+        // Verificar se houve alguma alteração
+        if($usuario->hasChanged() == false){
+            $retorno['info'] = 'Não há dados para serem atualizados !';
+            return $this->response->setJSON($retorno);
+        }
 
+        // Tem que desabilitar a proteção para conseguir salvar o campo ativo
+        if($this->usuarioModel->protect(false)->save($usuario)){
+            // VAMOS CONHECER MENSAGENS DE FLASH DATA
+            return $this->response->setJSON($retorno);
+        }
+
+        // Retornamos os erros de validação
+        $retorno['erro'] = 'Verifique os erros abaixo e tente novamente';
+        $retorno['erros_model'] = $this->usuarioModel->errors();
 
 
 
         // Retorno para o Ajax Request
-        //return $this->response->setJSON($retorno);
+        return $this->response->setJSON($retorno);
 
         // Precisa fazer dessa forma pois o dd nao funciona em metodos chamados pelo ajax.
         //echo '<pre>';

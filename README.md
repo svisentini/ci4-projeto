@@ -213,6 +213,9 @@ php spark serve
 	Tem que percorrer para exibir os erros
 	
 # 48.24 >> Trabalhando no metodo de atualizar - Parte 1
+
+# 49.2 >>  Trabalhando no metodo de atualizar - Parte 2
+	
 	
 	
 
