@@ -214,7 +214,11 @@ php spark serve
 	
 # 48.24 >> Trabalhando no metodo de atualizar - Parte 1
 
-# 49.2 >>  Trabalhando no metodo de atualizar - Parte 2
+# 49.25 >>  Trabalhando no metodo de atualizar - Parte 2
+
+# 50.26 >> Criptografando senha com Model Events
+	Referencia >> https://codeigniter.com/user_guide/models/model.html#model-events
+	Função deve ser colocada no UsuarioModel
 	
 	
 	
