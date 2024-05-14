@@ -220,7 +220,17 @@ php spark serve
 	Referencia >> https://codeigniter.com/user_guide/models/model.html#model-events
 	Função deve ser colocada no UsuarioModel
 	
-	
+# 51.27 >> Apresentando mensagens de Sessão
+	Referencia >> https://codeigniter.com/user_guide/libraries/sessions.html
+	Flashdata !
+		Torna valor(es) disponiveis para um proximo "redirect"
+		session()->setFlashda('','')   >> Setando uma chave/valor para a proxima "pagina" 
+		Disponíveis apenas uma vez.. em um "refresh", essas informações nao estarão mais disponíveis
+		Sao dados temporarios .. usados principalmente para exibir mensagens temporarias.. 
+	Alerts do bootstrap4 com o botao de fechar "X"
+		Referencia >> https://getbootstrap.com/docs/4.0/components/alerts/#dismissing
+		Criar um arquivo mensagens.php dentro da pasta "Layout"
+		No arquivo principal.php faz o include dele.
 	
 
 

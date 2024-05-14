@@ -148,7 +148,10 @@ class Usuarios extends BaseController
 
         // Tem que desabilitar a proteção para conseguir salvar o campo ativo
         if ($this->usuarioModel->protect(false)->save($usuario)) {
+
             // VAMOS CONHECER MENSAGENS DE FLASH DATA
+            session()->setFlashdata('sucesso','Dados salvos com sucesso!');
+
             return $this->response->setJSON($retorno);
         }
 

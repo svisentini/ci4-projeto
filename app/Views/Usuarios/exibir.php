@@ -14,6 +14,9 @@
 
   <div class="col-lg-4">
     <div class="block">
+
+      
+
       <div class="text-center">
 
         <?php if ($usuario->imagem == null) : ?>
