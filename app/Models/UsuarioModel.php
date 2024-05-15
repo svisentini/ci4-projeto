@@ -30,8 +30,27 @@ class UsuarioModel extends Model
     protected $deletedField  = 'deletado_em';
 
     // Validation
-    protected $validationRules      = [];
-    protected $validationMessages   = [];
+    protected $validationRules = [
+        'id'            => 'permit_empty|is_natural_no_zero', // <-- ESSA LINHA DEVE SER ADICIONADA
+        'nome'          => 'required|max_length[120]|min_length[3]',
+        'email'         => 'required|max_length[230]|valid_email|is_unique[usuarios.email,id,{id}]', // EMAIL unico para aquele ID >> para permitir alterar.
+        'password'      => 'required|max_length[255]|min_length[6]',
+        'password_confirmation'  => 'required_with[password]|max_length[255]|matches[password]',
+    ];
+    protected $validationMessages = [
+        'nome' => [
+            'required' => 'O campo "Nome Completo" é obrigatório.',
+            'min_length' => 'O campo "Nome Completo" precisa ter pelo menos 3 caracteres.',
+        ],
+        'email' => [
+            'required' => 'O campo "E-mail" é obrigatório.',
+            'is_unique' => 'Esse e-mail ja esta cadastrado. Informe outro.',
+        ],
+        'password_confirmation' => [
+            'matches' => 'As senhas estão diferentes.',
+        ],
+        
+    ];
 
     // Callbacks
     protected $beforeInsert   = ['hashPassword'];

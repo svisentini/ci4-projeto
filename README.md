@@ -231,6 +231,22 @@ php spark serve
 		Referencia >> https://getbootstrap.com/docs/4.0/components/alerts/#dismissing
 		Criar um arquivo mensagens.php dentro da pasta "Layout"
 		No arquivo principal.php faz o include dele.
+
+# 52 >> AJUSTE PARA A PROXIMA AULA >> Validações no "Model"
+    // Validation
+    protected $validationRules    = [
+    	'id'           => 'permit_empty|is_natural_no_zero', // <-- ESSA LINHA DEVE SER ADICIONADA
+		// as existentes
+    	'nome'         => 'required|min_length[3]|max_length[125]',
+    	'email'        => 'required|valid_email|max_length[230]|is_unique[usuarios.email,id,{id}]', // Não pode ter espaços
+    	'password'     => 'required|min_length[6]',
+    	'password_confirmation' => 'required_with[password]|matches[password]'
+    ];
+	
+# 53.28 >> Validando o formulário com validações no Model
+	Referencia >> https://codeigniter.com/user_guide/models/model.html#validating-data
+	Erro dessas validações sao retornadas no Controller como "erros_model"
+		Onde ja desenvolvemos a logica para exibir as mensagens na tela.
 	
 
 
