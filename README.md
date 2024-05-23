@@ -248,7 +248,11 @@ php spark serve
 	Erro dessas validações sao retornadas no Controller como "erros_model"
 		Onde ja desenvolvemos a logica para exibir as mensagens na tela.
 	
-
+# 54.29 >> Exibir view de Cadastro de Usuário
+	Arrumado o menu lateral com o "Home" e com "Usuarios"
+	Metodo criar no Controller
+	Criação view de criar
+	
 
 
 
