@@ -27,7 +27,7 @@
         <div class="form-group mt-5 mb-2">
 
           <input id="btn-salvar" type="submit" value="Salvar" class="btn btn-danger btn-sm mr-2">
-          <a href="<?php echo site_url("usuarios/exibir/$usuario->id") ?>" class="btn btn-sm btn-secondary ml-2">Voltar</a>
+          <a href="<?php echo site_url("usuarios") ?>" class="btn btn-sm btn-secondary ml-2">Voltar</a>
 
         </div>
 
@@ -54,7 +54,7 @@
 
       $.ajax({
         type: 'POST',
-        url: '<?php echo site_url('usuarios/atualizar'); ?>',
+        url: '<?php echo site_url('usuarios/cadastrar'); ?>',
         data: new FormData(this),
         dataType: 'json',
         contentType: false,
@@ -80,7 +80,7 @@
             } else {
               // SUCESSO >> Tudo certo com a atualização do Usuário
               // Sera redirecionado para exibição
-              window.location.href = "<?php echo site_url("usuarios/exibir/$usuario->id"); ?>"
+              window.location.href = "<?php echo site_url("usuarios/exibir/"); ?>" + response.id;
             }
           } else {
             // Existem erros de validação

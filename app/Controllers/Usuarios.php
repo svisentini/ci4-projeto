@@ -105,6 +105,71 @@ class Usuarios extends BaseController
     }
 
     // -----------------------------------------------------------------------
+    // --------- cadastrar ---------------------------------------------------
+    // -----------------------------------------------------------------------
+
+    public function cadastrar()
+    {
+        // Aceita apenas requisições Ajax
+        if (!$this->request->isAJAX()) {
+            return redirect()->back();
+        }
+
+        // Envio o hash do token do form
+        $retorno['token'] = csrf_hash();
+        //$retorno['info'] = "Essa é uma mensagem de informação";
+        //$retorno['erro'] = "Essa é uma mensagem de erro de validação";
+        //$retorno['erros_model'] = [
+        //    'nome' => 'O nome é obrigatório',
+        //    'email' => 'Email inválido',
+        //    'password' => 'A senha é muito curta',
+        //];
+
+        // Recupera todas informações do Post da Requisição
+        $post = $this->request->getPost();
+
+        // Crio novo objeto da entidade Usuario
+        $usuario = new Usuario($post);
+        $usuario->id = null; // Tive que limpar o ID para o save funcionar corretamente -> Estava retornando id = 0 !?!?!?!?!?
+
+        // Codigo para Debug
+        // Ver o conteudo no F12 do navegador
+        // echo '<pre>';
+        // print_r($usuario);
+        // exit;
+
+        // save é utilizado tanto para inclusão como para alteração dos dados
+        //      com id preenchido >> alteração
+        //      sem id preenchido >> inclusão
+        // Tem que desabilitar a proteção para conseguir salvar o campo ativo
+        if ($this->usuarioModel->protect(false)->save($usuario)) {
+
+            $btnCriar = anchor("usuarios/criar", 'Cadastrar novo usuário', ['class' => 'btn btn-danger mt-2']);
+
+            // VAMOS CONHECER MENSAGENS DE FLASH DATA
+            session()->setFlashdata('sucesso',"Dados salvos com sucesso!<br> $btnCriar");
+            // Seta o ID gerado na resposta
+            $retorno['id'] = $this->usuarioModel->getInsertID();
+
+            return $this->response->setJSON($retorno);
+        }
+
+        // Retornamos os erros de validação
+        $retorno['erro'] = 'Verifique os erros abaixo e tente novamente';
+        $retorno['erros_model'] = $this->usuarioModel->errors();
+
+
+
+        // Retorno para o Ajax Request
+        return $this->response->setJSON($retorno);
+
+        // Precisa fazer dessa forma pois o dd nao funciona em metodos chamados pelo ajax.
+        //echo '<pre>';
+        //print_r($post);
+        //exit;
+    }
+
+    // -----------------------------------------------------------------------
     // --------- editar ------------------------------------------------------
     // -----------------------------------------------------------------------
 

@@ -253,6 +253,24 @@ php spark serve
 	Metodo criar no Controller
 	Criação view de criar
 	
+# 55.30 >> Processando a criação do Usuário
+	save é utilizado tanto para inclusão como para alteração dos dados
+		com id preenchido >> alteração
+		sem id preenchido >> inclusão
+	Porem eu tive que limpar o ID para que o save funcionasse corretamente >> Estava retornando 0 para o ID
+	$usuario->id = null; 
+
+
+
+
+
+
+
+
+
+
+	
+	
 
 
 
